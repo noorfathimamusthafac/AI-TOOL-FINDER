@@ -5,7 +5,7 @@
 
 // Storage Keys
 const THEME_STORAGE_KEY = 'ai_tool_finder_theme';
-const FAVOURITES_STORAGE_KEY = 'ai_tool_finder_favourites';
+const FAVORITES_STORAGE_KEY = 'ai_tool_finder_favorites';
 
 // Full Curated AI Tools Dataset (Embedded fallback ensures 100% offline & local server support)
 const DEFAULT_TOOLS = [
@@ -258,8 +258,8 @@ const state = {
   selectedCategory: 'All',
   selectedPricing: 'All',
   showFeaturedOnly: false,
-  showFavouritesOnly: false,
-  favourites: new Set()
+  showFavoritesOnly: false,
+  favorites: new Set()
 };
 
 // DOM References
@@ -273,7 +273,7 @@ const dom = {
   categoryPills: document.getElementById('category-pills'),
   pricingFilter: document.getElementById('pricing-filter'),
   toggleFeaturedBtn: document.getElementById('toggle-featured-btn'),
-  viewFavouritesBtn: document.getElementById('view-favourites-btn'),
+  viewFavoritesBtn: document.getElementById('view-favorites-btn'),
   headerFavBadge: document.getElementById('header-fav-badge'),
   toolsGrid: document.getElementById('tools-grid'),
   emptyState: document.getElementById('empty-state'),
@@ -314,42 +314,42 @@ function applyTheme(theme) {
 }
 
 /* ==========================================================================
-   Favourites Management
+   Favorites Management (Standard LocalStorage)
    ========================================================================== */
-function loadFavourites() {
+function loadFavorites() {
   try {
-    const stored = localStorage.getItem(FAVOURITES_STORAGE_KEY);
+    const stored = localStorage.getItem(FAVORITES_STORAGE_KEY);
     if (stored) {
       const parsed = JSON.parse(stored);
-      state.favourites = new Set(Array.isArray(parsed) ? parsed : []);
+      state.favorites = new Set(Array.isArray(parsed) ? parsed : []);
     }
   } catch (err) {
-    state.favourites = new Set();
+    state.favorites = new Set();
   }
-  updateFavouritesBadge();
+  updateFavoritesBadge();
 }
 
-function saveFavourites() {
+function saveFavorites() {
   try {
-    localStorage.setItem(FAVOURITES_STORAGE_KEY, JSON.stringify(Array.from(state.favourites)));
+    localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(Array.from(state.favorites)));
   } catch (err) {
-    console.warn('Failed to save favourites to LocalStorage:', err);
+    console.warn('Failed to save favorites to LocalStorage:', err);
   }
-  updateFavouritesBadge();
+  updateFavoritesBadge();
 }
 
-function toggleFavourite(toolId) {
-  if (state.favourites.has(toolId)) {
-    state.favourites.delete(toolId);
+function toggleFavorite(toolId) {
+  if (state.favorites.has(toolId)) {
+    state.favorites.delete(toolId);
   } else {
-    state.favourites.add(toolId);
+    state.favorites.add(toolId);
   }
-  saveFavourites();
+  saveFavorites();
   renderTools();
 }
 
-function updateFavouritesBadge() {
-  const count = state.favourites.size;
+function updateFavoritesBadge() {
+  const count = state.favorites.size;
   if (dom.headerFavBadge) {
     dom.headerFavBadge.textContent = count;
   }
@@ -360,7 +360,7 @@ function updateFavouritesBadge() {
    ========================================================================== */
 async function loadToolsData() {
   try {
-    const response = await fetch('data/tools.json');
+    const response = await fetch('data/tools.json?v=2.1');
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     if (Array.isArray(data) && data.length > 0) {
@@ -408,8 +408,8 @@ function getFilteredTools() {
       return false;
     }
 
-    // 5. Favourites Only Filter
-    if (state.showFavouritesOnly && !state.favourites.has(tool.id)) {
+    // 5. Favorites Only Filter
+    if (state.showFavoritesOnly && !state.favorites.has(tool.id)) {
       return false;
     }
 
@@ -458,8 +458,8 @@ function renderTools() {
 
   // Status text update
   let statusText = `Showing ${filtered.length} of ${total} tools`;
-  if (state.showFavouritesOnly) {
-    statusText = `Showing ${filtered.length} saved tools`;
+  if (state.showFavoritesOnly) {
+    statusText = `Showing ${filtered.length} favorite tools`;
   } else if (state.selectedCategory !== 'All') {
     statusText = `Showing ${filtered.length} tools in ${state.selectedCategory}`;
   }
@@ -473,7 +473,7 @@ function renderTools() {
     state.selectedCategory !== 'All' ||
     state.selectedPricing !== 'All' ||
     state.showFeaturedOnly ||
-    state.showFavouritesOnly
+    state.showFavoritesOnly
   );
   dom.resetFiltersBtn?.classList.toggle('hidden', !hasActiveFilters);
 
@@ -488,9 +488,9 @@ function renderTools() {
     const emptyTitle = dom.emptyState?.querySelector('.empty-title');
     const emptyMsg = dom.emptyState?.querySelector('.empty-message');
 
-    if (state.showFavouritesOnly) {
-      if (emptyTitle) emptyTitle.textContent = 'No Saved Tools Yet';
-      if (emptyMsg) emptyMsg.textContent = 'Click the bookmark icon on any AI tool card to save it to your favourites.';
+    if (state.showFavoritesOnly) {
+      if (emptyTitle) emptyTitle.textContent = 'No Favorite Tools Saved Yet';
+      if (emptyMsg) emptyMsg.textContent = 'Click the bookmark icon on any AI tool card to save it to your favorites.';
     } else {
       if (emptyTitle) emptyTitle.textContent = 'No Tools Found';
       if (emptyMsg) emptyMsg.textContent = 'No results match your active search and filter criteria. Try clearing some filters.';
@@ -503,7 +503,7 @@ function renderTools() {
 
   // Render Tool Cards
   filtered.forEach(tool => {
-    const isFav = state.favourites.has(tool.id);
+    const isFav = state.favorites.has(tool.id);
     const monogram = getInitials(tool.name);
     const tagClass = getCategoryTagClass(tool.category);
     const pricingClass = getPricingBadgeClass(tool.pricing);
@@ -531,9 +531,9 @@ function renderTools() {
         </div>
         <button
           class="fav-btn ${isFav ? 'favorited' : ''}"
-          aria-label="${isFav ? 'Remove from saved' : 'Save to favourites'}"
+          aria-label="${isFav ? 'Remove from favorites' : 'Save to favorites'}"
           data-tool-id="${tool.id}"
-          title="${isFav ? 'Remove from saved' : 'Save tool'}"
+          title="${isFav ? 'Remove from favorites' : 'Save tool'}"
         >
           <svg width="17" height="17" viewBox="0 0 24 24" fill="${isFav ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
@@ -573,11 +573,11 @@ function renderTools() {
       </div>
     `;
 
-    // Favourite toggle listener
+    // Favorite toggle listener
     const favBtn = card.querySelector('.fav-btn');
     favBtn?.addEventListener('click', (e) => {
       e.stopPropagation();
-      toggleFavourite(tool.id);
+      toggleFavorite(tool.id);
     });
 
     dom.toolsGrid.appendChild(card);
@@ -634,10 +634,10 @@ function setupEventListeners() {
     renderTools();
   });
 
-  // 5. Saved tools view toggle
-  dom.viewFavouritesBtn?.addEventListener('click', () => {
-    state.showFavouritesOnly = !state.showFavouritesOnly;
-    dom.viewFavouritesBtn.classList.toggle('active-filter', state.showFavouritesOnly);
+  // 5. Favorites view toggle
+  dom.viewFavoritesBtn?.addEventListener('click', () => {
+    state.showFavoritesOnly = !state.showFavoritesOnly;
+    dom.viewFavoritesBtn.classList.toggle('active-filter', state.showFavoritesOnly);
     renderTools();
   });
 
@@ -647,7 +647,7 @@ function setupEventListeners() {
     state.selectedCategory = 'All';
     state.selectedPricing = 'All';
     state.showFeaturedOnly = false;
-    state.showFavouritesOnly = false;
+    state.showFavoritesOnly = false;
 
     if (dom.searchInput) dom.searchInput.value = '';
     dom.clearSearchBtn?.classList.add('hidden');
@@ -656,7 +656,7 @@ function setupEventListeners() {
     dom.toggleFeaturedBtn?.classList.remove('active');
     dom.toggleFeaturedBtn?.setAttribute('aria-pressed', 'false');
 
-    dom.viewFavouritesBtn?.classList.remove('active-filter');
+    dom.viewFavoritesBtn?.classList.remove('active-filter');
 
     dom.categoryPills?.querySelectorAll('.pill').forEach(pill => {
       const isAll = pill.getAttribute('data-category') === 'All';
@@ -680,8 +680,8 @@ function setupEventListeners() {
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
-  loadFavourites();
+  loadFavorites();
   setupEventListeners();
   loadToolsData();
-  console.log('AI Tool Finder: 24+ AI tools loaded with standard modern dashboard.');
+  console.log('AI Tool Finder: Clean Standard Dashboard loaded.');
 });
