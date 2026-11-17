@@ -1,19 +1,19 @@
 /**
  * AI Tool Finder - Core Engine
- * Standard Modern Dashboard (No Emojis, Standard SVG Icons, Vibrant Palette)
+ * Standard Modern Dashboard (No Emojis, Standard SVG Icons, Vibrant Palette, Simple Free/Paid Tiers)
  */
 
 // Storage Keys
 const THEME_STORAGE_KEY = 'ai_tool_finder_theme';
 const FAVORITES_STORAGE_KEY = 'ai_tool_finder_favorites';
 
-// Full Curated AI Tools Dataset (Embedded fallback ensures 100% offline & local server support)
+// Full Curated AI Tools Dataset (Simple Free and Paid Tiers)
 const DEFAULT_TOOLS = [
   {
     "id": "chatgpt",
     "name": "ChatGPT",
     "category": "AI Chatbots",
-    "pricing": "Freemium",
+    "pricing": "Free",
     "description": "Conversational AI by OpenAI for advanced dialogue, reasoning, writing, coding assistance, and creative ideation.",
     "website": "https://chatgpt.com",
     "featured": true,
@@ -23,7 +23,7 @@ const DEFAULT_TOOLS = [
     "id": "claude",
     "name": "Claude",
     "category": "AI Chatbots",
-    "pricing": "Freemium",
+    "pricing": "Free",
     "description": "Next-generation AI assistant by Anthropic known for deep reasoning, nuance, large context windows, and code analysis.",
     "website": "https://claude.ai",
     "featured": true,
@@ -33,7 +33,7 @@ const DEFAULT_TOOLS = [
     "id": "gemini",
     "name": "Gemini",
     "category": "AI Chatbots",
-    "pricing": "Freemium",
+    "pricing": "Free",
     "description": "Google's multimodal flagship AI designed to reason seamlessly across text, code, audio, images, and video.",
     "website": "https://gemini.google.com",
     "featured": true,
@@ -43,7 +43,7 @@ const DEFAULT_TOOLS = [
     "id": "perplexity",
     "name": "Perplexity",
     "category": "Research",
-    "pricing": "Freemium",
+    "pricing": "Free",
     "description": "Conversational search and discovery engine delivering structured answers with verified web citations and sources.",
     "website": "https://www.perplexity.ai",
     "featured": true,
@@ -53,7 +53,7 @@ const DEFAULT_TOOLS = [
     "id": "canva-ai",
     "name": "Canva Magic Studio",
     "category": "Image Generation",
-    "pricing": "Freemium",
+    "pricing": "Free",
     "description": "Creative visual suite with generative AI for image synthesis, presentation design, background removal, and editing.",
     "website": "https://www.canva.com",
     "featured": true,
@@ -83,7 +83,7 @@ const DEFAULT_TOOLS = [
     "id": "cursor",
     "name": "Cursor",
     "category": "Coding",
-    "pricing": "Freemium",
+    "pricing": "Free",
     "description": "AI-first code editor with codebase-wide indexing, natural language editing, multi-file refactoring, and terminal AI.",
     "website": "https://www.cursor.com",
     "featured": true,
@@ -93,7 +93,7 @@ const DEFAULT_TOOLS = [
     "id": "v0",
     "name": "v0 by Vercel",
     "category": "Coding",
-    "pricing": "Freemium",
+    "pricing": "Free",
     "description": "Generative UI system by Vercel that turns natural language prompts into production-ready React, Tailwind, and Next.js code.",
     "website": "https://v0.dev",
     "featured": true,
@@ -103,7 +103,7 @@ const DEFAULT_TOOLS = [
     "id": "runway",
     "name": "Runway Gen-3",
     "category": "Video Generation",
-    "pricing": "Freemium",
+    "pricing": "Free",
     "description": "Generative video and creative suite supporting text-to-video, image-to-video, camera motion controls, and VFX tools.",
     "website": "https://runwayml.com",
     "featured": true,
@@ -143,7 +143,7 @@ const DEFAULT_TOOLS = [
     "id": "grammarly",
     "name": "Grammarly",
     "category": "Writing",
-    "pricing": "Freemium",
+    "pricing": "Free",
     "description": "AI writing companion providing grammar correction, tone adjustment, conciseness feedback, and contextual rewrite recommendations.",
     "website": "https://www.grammarly.com",
     "featured": false,
@@ -163,7 +163,7 @@ const DEFAULT_TOOLS = [
     "id": "elevenlabs",
     "name": "ElevenLabs",
     "category": "Productivity",
-    "pricing": "Freemium",
+    "pricing": "Free",
     "description": "Realistic voice synthesis, voice cloning, multilingual speech translation, and sound effects generation platform.",
     "website": "https://elevenlabs.io",
     "featured": true,
@@ -173,7 +173,7 @@ const DEFAULT_TOOLS = [
     "id": "suno",
     "name": "Suno",
     "category": "Productivity",
-    "pricing": "Freemium",
+    "pricing": "Free",
     "description": "Generative audio platform creating full-fidelity musical tracks with lyrics, vocals, and instruments from text prompts.",
     "website": "https://suno.com",
     "featured": false,
@@ -183,7 +183,7 @@ const DEFAULT_TOOLS = [
     "id": "otter-ai",
     "name": "Otter.ai",
     "category": "Productivity",
-    "pricing": "Freemium",
+    "pricing": "Free",
     "description": "Automated meeting assistant that joins calls, transcribes conversations in real-time, and extracts key action items.",
     "website": "https://otter.ai",
     "featured": false,
@@ -193,7 +193,7 @@ const DEFAULT_TOOLS = [
     "id": "descript",
     "name": "Descript",
     "category": "Productivity",
-    "pricing": "Freemium",
+    "pricing": "Free",
     "description": "All-in-one video and podcast editor where you edit audio and video as easily as editing a text transcript.",
     "website": "https://www.descript.com",
     "featured": false,
@@ -203,7 +203,7 @@ const DEFAULT_TOOLS = [
     "id": "deepl",
     "name": "DeepL",
     "category": "Writing",
-    "pricing": "Freemium",
+    "pricing": "Free",
     "description": "High-accuracy neural machine translation and writing refinement tool supporting dozens of global languages.",
     "website": "https://www.deepl.com",
     "featured": false,
@@ -223,7 +223,7 @@ const DEFAULT_TOOLS = [
     "id": "bolt-new",
     "name": "Bolt.new",
     "category": "Coding",
-    "pricing": "Freemium",
+    "pricing": "Free",
     "description": "In-browser development sandbox powered by WebContainers that prompts, executes, and deploys full-stack web applications.",
     "website": "https://bolt.new",
     "featured": true,
@@ -233,7 +233,7 @@ const DEFAULT_TOOLS = [
     "id": "lovable",
     "name": "Lovable",
     "category": "Coding",
-    "pricing": "Freemium",
+    "pricing": "Free",
     "description": "Full-stack AI software engineer that creates complete web applications with backend, auth, and database integration.",
     "website": "https://lovable.dev",
     "featured": false,
@@ -243,7 +243,7 @@ const DEFAULT_TOOLS = [
     "id": "consensus",
     "name": "Consensus",
     "category": "Research",
-    "pricing": "Freemium",
+    "pricing": "Free",
     "description": "Academic search engine using AI to extract verified findings, consensus summaries, and citations from peer-reviewed papers.",
     "website": "https://consensus.app",
     "featured": false,
@@ -360,7 +360,7 @@ function updateFavoritesBadge() {
    ========================================================================== */
 async function loadToolsData() {
   try {
-    const response = await fetch('data/tools.json?v=2.1');
+    const response = await fetch('data/tools.json?v=3');
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     if (Array.isArray(data) && data.length > 0) {
@@ -398,7 +398,7 @@ function getFilteredTools() {
       return false;
     }
 
-    // 3. Pricing Filter
+    // 3. Pricing Filter (Simple Free / Paid)
     if (state.selectedPricing !== 'All' && tool.pricing !== state.selectedPricing) {
       return false;
     }
@@ -442,11 +442,7 @@ function getCategoryTagClass(category) {
 }
 
 function getPricingBadgeClass(pricing) {
-  switch (pricing.toLowerCase()) {
-    case 'free': return 'pricing-free';
-    case 'paid': return 'pricing-paid';
-    default: return 'pricing-freemium';
-  }
+  return pricing.toLowerCase() === 'paid' ? 'pricing-paid' : 'pricing-free';
 }
 
 /* ==========================================================================
@@ -683,5 +679,5 @@ document.addEventListener('DOMContentLoaded', () => {
   loadFavorites();
   setupEventListeners();
   loadToolsData();
-  console.log('AI Tool Finder: Clean Standard Dashboard loaded.');
+  console.log('AI Tool Finder: Clean Free & Paid Dashboard loaded.');
 });
