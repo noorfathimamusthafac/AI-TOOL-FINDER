@@ -1,1 +1,242 @@
-[]
+[
+  {
+    "id": "chatgpt",
+    "name": "ChatGPT",
+    "category": "AI Chatbots",
+    "pricing": "Freemium",
+    "description": "Conversational AI by OpenAI for advanced dialogue, reasoning, writing, coding assistance, and creative ideation.",
+    "website": "https://chatgpt.com",
+    "featured": true,
+    "tags": ["Conversation", "Assistant", "Reasoning"]
+  },
+  {
+    "id": "claude",
+    "name": "Claude",
+    "category": "AI Chatbots",
+    "pricing": "Freemium",
+    "description": "Next-generation AI assistant by Anthropic known for deep reasoning, nuance, large context windows, and code analysis.",
+    "website": "https://claude.ai",
+    "featured": true,
+    "tags": ["Reasoning", "Analysis", "Writing"]
+  },
+  {
+    "id": "gemini",
+    "name": "Gemini",
+    "category": "AI Chatbots",
+    "pricing": "Freemium",
+    "description": "Google's multimodal flagship AI designed to reason seamlessly across text, code, audio, images, and video.",
+    "website": "https://gemini.google.com",
+    "featured": true,
+    "tags": ["Multimodal", "Google", "Research"]
+  },
+  {
+    "id": "perplexity",
+    "name": "Perplexity",
+    "category": "Research",
+    "pricing": "Freemium",
+    "description": "Conversational search and discovery engine delivering structured answers with verified web citations and sources.",
+    "website": "https://www.perplexity.ai",
+    "featured": true,
+    "tags": ["Search", "Citations", "Fact-Checking"]
+  },
+  {
+    "id": "canva-ai",
+    "name": "Canva Magic Studio",
+    "category": "Image Generation",
+    "pricing": "Freemium",
+    "description": "Creative visual suite with generative AI for image synthesis, presentation design, background removal, and editing.",
+    "website": "https://www.canva.com",
+    "featured": true,
+    "tags": ["Design", "Graphics", "Marketing"]
+  },
+  {
+    "id": "notion-ai",
+    "name": "Notion AI",
+    "category": "Productivity",
+    "pricing": "Paid",
+    "description": "Integrated connected workspace AI for document drafting, meeting summary extraction, and workspace Q&A.",
+    "website": "https://www.notion.so/product/ai",
+    "featured": false,
+    "tags": ["Workspace", "Notes", "Summarization"]
+  },
+  {
+    "id": "github-copilot",
+    "name": "GitHub Copilot",
+    "category": "Coding",
+    "pricing": "Paid",
+    "description": "AI pair programmer providing context-aware code autocomplete, unit test generation, and CLI terminal assistance.",
+    "website": "https://github.com/features/copilot",
+    "featured": true,
+    "tags": ["Autocomplete", "Development", "Debugging"]
+  },
+  {
+    "id": "cursor",
+    "name": "Cursor",
+    "category": "Coding",
+    "pricing": "Freemium",
+    "description": "AI-first code editor with codebase-wide indexing, natural language editing, multi-file refactoring, and terminal AI.",
+    "website": "https://www.cursor.com",
+    "featured": true,
+    "tags": ["IDE", "Multi-file", "Refactor"]
+  },
+  {
+    "id": "v0",
+    "name": "v0 by Vercel",
+    "category": "Coding",
+    "pricing": "Freemium",
+    "description": "Generative UI system by Vercel that turns natural language prompts into production-ready React, Tailwind, and Next.js code.",
+    "website": "https://v0.dev",
+    "featured": true,
+    "tags": ["React", "UI Components", "Tailwind"]
+  },
+  {
+    "id": "runway",
+    "name": "Runway Gen-3",
+    "category": "Video Generation",
+    "pricing": "Freemium",
+    "description": "Generative video and creative suite supporting text-to-video, image-to-video, camera motion controls, and VFX tools.",
+    "website": "https://runwayml.com",
+    "featured": true,
+    "tags": ["Video Synthesis", "Motion", "VFX"]
+  },
+  {
+    "id": "sora",
+    "name": "Sora",
+    "category": "Video Generation",
+    "pricing": "Paid",
+    "description": "OpenAI's high-definition video model capable of generating complex scenes with realistic physics, characters, and motion.",
+    "website": "https://openai.com/sora",
+    "featured": true,
+    "tags": ["Photorealism", "High-Definition", "OpenAI"]
+  },
+  {
+    "id": "midjourney",
+    "name": "Midjourney",
+    "category": "Image Generation",
+    "pricing": "Paid",
+    "description": "Premier generative AI art lab known for artistic depth, photorealistic textures, lighting nuance, and stylistic control.",
+    "website": "https://www.midjourney.com",
+    "featured": true,
+    "tags": ["Art", "Photorealism", "Creative"]
+  },
+  {
+    "id": "stable-diffusion",
+    "name": "Stable Diffusion",
+    "category": "Image Generation",
+    "pricing": "Free",
+    "description": "Open-weight foundational image generation model ecosystem supporting customizable fine-tunes, LoRAs, and local runs.",
+    "website": "https://stability.ai",
+    "featured": false,
+    "tags": ["Open Source", "Local AI", "Customizable"]
+  },
+  {
+    "id": "grammarly",
+    "name": "Grammarly",
+    "category": "Writing",
+    "pricing": "Freemium",
+    "description": "AI writing companion providing grammar correction, tone adjustment, conciseness feedback, and contextual rewrite recommendations.",
+    "website": "https://www.grammarly.com",
+    "featured": false,
+    "tags": ["Grammar", "Clarity", "Tone"]
+  },
+  {
+    "id": "jasper",
+    "name": "Jasper AI",
+    "category": "Writing",
+    "pricing": "Paid",
+    "description": "Enterprise marketing AI platform that generates brand-aligned blog posts, social campaigns, ads, and SEO content.",
+    "website": "https://www.jasper.ai",
+    "featured": false,
+    "tags": ["Marketing", "Copywriting", "SEO"]
+  },
+  {
+    "id": "elevenlabs",
+    "name": "ElevenLabs",
+    "category": "Productivity",
+    "pricing": "Freemium",
+    "description": "Realistic voice synthesis, voice cloning, multilingual speech translation, and sound effects generation platform.",
+    "website": "https://elevenlabs.io",
+    "featured": true,
+    "tags": ["Voice", "Text-to-Speech", "Audio"]
+  },
+  {
+    "id": "suno",
+    "name": "Suno",
+    "category": "Productivity",
+    "pricing": "Freemium",
+    "description": "Generative audio platform creating full-fidelity musical tracks with lyrics, vocals, and instruments from text prompts.",
+    "website": "https://suno.com",
+    "featured": false,
+    "tags": ["Music", "Vocals", "Composition"]
+  },
+  {
+    "id": "otter-ai",
+    "name": "Otter.ai",
+    "category": "Productivity",
+    "pricing": "Freemium",
+    "description": "Automated meeting assistant that joins calls, transcribes conversations in real-time, and extracts key action items.",
+    "website": "https://otter.ai",
+    "featured": false,
+    "tags": ["Transcription", "Meetings", "Action Items"]
+  },
+  {
+    "id": "descript",
+    "name": "Descript",
+    "category": "Productivity",
+    "pricing": "Freemium",
+    "description": "All-in-one video and podcast editor where you edit audio and video as easily as editing a text transcript.",
+    "website": "https://www.descript.com",
+    "featured": false,
+    "tags": ["Podcast", "Video Editing", "Transcription"]
+  },
+  {
+    "id": "deepl",
+    "name": "DeepL",
+    "category": "Writing",
+    "pricing": "Freemium",
+    "description": "High-accuracy neural machine translation and writing refinement tool supporting dozens of global languages.",
+    "website": "https://www.deepl.com",
+    "featured": false,
+    "tags": ["Translation", "Languages", "Precision"]
+  },
+  {
+    "id": "replit-agent",
+    "name": "Replit Agent",
+    "category": "Coding",
+    "pricing": "Paid",
+    "description": "Autonomous coding agent that builds, configures, and deploys full-stack software applications from natural language prompts.",
+    "website": "https://replit.com",
+    "featured": true,
+    "tags": ["Full-stack", "Deployment", "Autonomous"]
+  },
+  {
+    "id": "bolt-new",
+    "name": "Bolt.new",
+    "category": "Coding",
+    "pricing": "Freemium",
+    "description": "In-browser development sandbox powered by WebContainers that prompts, executes, and deploys full-stack web applications.",
+    "website": "https://bolt.new",
+    "featured": true,
+    "tags": ["WebContainers", "Full-Stack", "Instant Preview"]
+  },
+  {
+    "id": "lovable",
+    "name": "Lovable",
+    "category": "Coding",
+    "pricing": "Freemium",
+    "description": "Full-stack AI software engineer that creates complete web applications with backend, auth, and database integration.",
+    "website": "https://lovable.dev",
+    "featured": false,
+    "tags": ["App Builder", "Full-Stack", "Fast"]
+  },
+  {
+    "id": "consensus",
+    "name": "Consensus",
+    "category": "Research",
+    "pricing": "Freemium",
+    "description": "Academic search engine using AI to extract verified findings, consensus summaries, and citations from peer-reviewed papers.",
+    "website": "https://consensus.app",
+    "featured": false,
+    "tags": ["Academic", "Science", "Peer-Reviewed"]
+  }
+]
