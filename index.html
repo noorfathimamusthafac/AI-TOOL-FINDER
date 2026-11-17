@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Tool Finder – Discover the Right AI Tool</title>
+  <meta name="description" content="Discover, search, filter, and save the best AI tools for coding, writing, research, image generation, and productivity." />
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,14 +18,22 @@
   <!-- Header & Navigation -->
   <header class="app-header">
     <div class="header-container">
-      <div class="brand">
+      <a href="#" class="brand" id="brand-link" aria-label="AI Tool Finder Home">
         <span class="brand-badge">⚡</span>
         <div class="brand-info">
           <h1 class="brand-title">AI Tool Finder</h1>
           <span class="brand-subtitle">Smart AI Directory</span>
         </div>
-      </div>
+      </a>
+
       <div class="header-actions">
+        <!-- Favourites Quick Nav -->
+        <button id="view-favourites-btn" class="nav-btn fav-nav-btn" aria-label="View saved favourite tools">
+          <span class="heart-icon">❤️</span>
+          <span class="fav-label">Favourites</span>
+          <span id="header-fav-badge" class="badge-count">0</span>
+        </button>
+
         <!-- Theme Toggle Switch -->
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light and dark mode">
           <span class="theme-icon">🌙</span>
@@ -34,19 +43,171 @@
     </div>
   </header>
 
-  <!-- Main Content (Step 1 Initial Setup Placeholder) -->
+  <!-- Main Content Container -->
   <main class="main-content">
-    <section class="welcome-box">
-      <span class="welcome-icon">🚀</span>
-      <h2>Step 1: Initial Project Setup</h2>
-      <p>The AI Tool Finder project architecture and vibrant design system are ready.</p>
-      <div class="step-badge">Status: Step 1 Complete (Ready to commit)</div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-badge">
+        <span class="sparkle">✨</span> Curated Directory for Modern Creators & Developers
+      </div>
+      <h2 class="hero-title">
+        Discover the <span class="gradient-text">Right AI Tool</span> for Any Task
+      </h2>
+      <p class="hero-description">
+        Explore hand-picked artificial intelligence tools for writing, coding, image generation, research, and productivity. Search, filter, and save your favourites.
+      </p>
+
+      <!-- Search Bar UI -->
+      <div class="search-box-wrapper">
+        <div class="search-box">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Search tools by name, description, or keyword (e.g., ChatGPT, coding, art)..."
+            autocomplete="off"
+            aria-label="Search AI tools"
+          />
+          <button id="clear-search-btn" class="clear-search-btn hidden" aria-label="Clear search input">
+            ✕
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters & Category Navigation -->
+    <section class="controls-section" id="categories-section">
+      <div class="controls-header">
+        <div class="filter-group">
+          <span class="filter-label">Categories:</span>
+          <div class="category-pills" id="category-pills" role="tablist" aria-label="Filter by category">
+            <button class="pill active" data-category="All" role="tab" aria-selected="true">All Tools</button>
+            <button class="pill" data-category="AI Chatbots" role="tab" aria-selected="false">🤖 AI Chatbots</button>
+            <button class="pill" data-category="Writing" role="tab" aria-selected="false">✍️ Writing</button>
+            <button class="pill" data-category="Research" role="tab" aria-selected="false">🔍 Research</button>
+            <button class="pill" data-category="Image Generation" role="tab" aria-selected="false">🎨 Image Generation</button>
+            <button class="pill" data-category="Video Generation" role="tab" aria-selected="false">🎬 Video Generation</button>
+            <button class="pill" data-category="Productivity" role="tab" aria-selected="false">📝 Productivity</button>
+            <button class="pill" data-category="Coding" role="tab" aria-selected="false">💻 Coding</button>
+          </div>
+        </div>
+
+        <!-- Secondary Filters (Pricing & Featured) -->
+        <div class="secondary-filters">
+          <div class="pricing-filter-wrapper">
+            <label for="pricing-filter" class="filter-label">Pricing:</label>
+            <select id="pricing-filter" class="custom-select" aria-label="Filter by pricing model">
+              <option value="All">All Pricing</option>
+              <option value="Free">Free</option>
+              <option value="Freemium">Freemium</option>
+              <option value="Paid">Paid</option>
+            </select>
+          </div>
+
+          <button id="toggle-featured-btn" class="filter-chip-btn" aria-pressed="false">
+            <span>⭐</span> Featured Only
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Filter Status Bar -->
+      <div class="results-meta-bar">
+        <div class="results-count-container">
+          <span id="results-count-text" class="results-count-text">Homepage Layout Ready</span>
+        </div>
+        <button id="reset-filters-btn" class="reset-link hidden">
+          Reset all filters
+        </button>
+      </div>
+    </section>
+
+    <!-- Directory & Tool Cards Layout Container -->
+    <section class="directory-section" aria-live="polite">
+      <div id="tools-grid" class="tools-grid">
+        <!-- Sample Layout Preview Card 1 -->
+        <article class="tool-card preview-card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <div class="tool-icon-wrapper">🤖</div>
+              <div class="tool-name-container">
+                <h3 class="tool-name">ChatGPT</h3>
+                <span class="featured-star" title="Featured Tool">⭐</span>
+              </div>
+            </div>
+            <button class="fav-btn" title="Add to favourites">🤍</button>
+          </div>
+          <div class="card-badges">
+            <span class="category-tag tag-chatbots">AI Chatbots</span>
+            <span class="pricing-badge pricing-freemium">Freemium</span>
+          </div>
+          <p class="card-description">
+            Conversational AI model capable of generating natural dialogue, writing code, and answering complex questions.
+          </p>
+          <div class="card-footer">
+            <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="visit-btn">
+              <span>Visit Official Site</span>
+              <span class="arrow-icon">→</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Sample Layout Preview Card 2 -->
+        <article class="tool-card preview-card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <div class="tool-icon-wrapper">💻</div>
+              <div class="tool-name-container">
+                <h3 class="tool-name">GitHub Copilot</h3>
+                <span class="featured-star" title="Featured Tool">⭐</span>
+              </div>
+            </div>
+            <button class="fav-btn" title="Add to favourites">🤍</button>
+          </div>
+          <div class="card-badges">
+            <span class="category-tag tag-coding">Coding</span>
+            <span class="pricing-badge pricing-paid">Paid</span>
+          </div>
+          <p class="card-description">
+            AI pair programmer that provides autocomplete suggestions and unit test generation directly in your code editor.
+          </p>
+          <div class="card-footer">
+            <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" class="visit-btn">
+              <span>Visit Official Site</span>
+              <span class="arrow-icon">→</span>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Friendly Empty State Container -->
+      <div id="empty-state" class="empty-state hidden">
+        <div class="empty-icon-bubble">🔎</div>
+        <h3 class="empty-title">No AI Tools Found</h3>
+        <p class="empty-message">
+          We couldn't find any tools matching your criteria. Try adjusting your query or resetting filters.
+        </p>
+        <button id="empty-reset-btn" class="btn btn-primary">
+          View All Tools
+        </button>
+      </div>
     </section>
   </main>
 
   <!-- Footer -->
   <footer class="app-footer">
-    <p>&copy; 2026 AI Tool Finder. Building step by step for GitHub portfolio.</p>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="footer-logo">⚡ AI Tool Finder</span>
+        <p class="footer-tagline">Empowering creators, students, and engineers with the best AI tools.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#categories-section">Browse Categories</a>
+        <a href="#view-favourites-btn">Favourites</a>
+        <a href="https://github.com/noorfathimamusthafac/AI-TOOL-FINDER" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 AI Tool Finder. Built with Vanilla HTML5, CSS3 & JavaScript.</p>
+    </div>
   </footer>
 
   <script src="script.js"></script>

@@ -8,9 +8,9 @@ A simple, modern, responsive, and vibrant web application to help users discover
 
 | Step | Feature Description | Status | Git Commit Message |
 | :---: | :--- | :---: | :--- |
-| **1** | **Initial project setup & Theme Toggle** | ✅ Ready to commit | `Initial project setup` |
-| **2** | Responsive homepage layout & Hero section | ⏳ Next | `Add responsive homepage layout` |
-| **3** | AI tools dataset (`data/tools.json`) | ⏳ Queued | `Add AI tools dataset` |
+| **1** | **Initial project setup & Theme Toggle** | ✅ Pushed | `Initial project setup` |
+| **2** | **Responsive homepage layout & Hero UI** | ✅ Ready to commit | `Add responsive homepage layout` |
+| **3** | AI tools dataset (`data/tools.json`) | ⏳ Next | `Add AI tools dataset` |
 | **4** | Real-time search functionality | ⏳ Queued | `Implement search functionality` |
 | **5** | Category filtering system | ⏳ Queued | `Add category filtering` |
 | **6** | Favourites bookmarking (LocalStorage) | ⏳ Queued | `Implement favourites feature` |
