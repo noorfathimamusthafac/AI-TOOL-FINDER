@@ -13,9 +13,9 @@ A modern, responsive, and vibrant web application to help users discover, filter
 | **3** | **AI tools dataset (24+ tools, Free/Paid)** | ✅ Pushed | `Add AI tools dataset` |
 | **4** | **Real-time search & keyboard shortcuts** | ✅ Pushed | `Implement search functionality` |
 | **5** | **Category filtering & dynamic count badges** | ✅ Pushed | `Add category filtering` |
-| **6** | **Favorites bookmarking & toast notifications** | ✅ Completed | `Implement favourites feature` |
-| **7** | Responsive design & mobile polish | ⏳ Next | `Improve responsive design` |
-| **8** | Project documentation & polish | ⏳ Queued | `Update project documentation` |
+| **6** | **Favorites bookmarking & toast notifications** | ✅ Pushed | `Implement favourites feature` |
+| **7** | **Responsive design & mobile UX polish** | ✅ Completed | `Improve responsive design` |
+| **8** | Project documentation & polish | ⏳ Next | `Update project documentation` |
 
 ---
 
