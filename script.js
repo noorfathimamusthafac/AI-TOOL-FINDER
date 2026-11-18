@@ -338,11 +338,28 @@ function saveFavorites() {
   updateFavoritesBadge();
 }
 
+let toastTimeout = null;
+function showToast(message) {
+  const toastEl = document.getElementById('toast');
+  if (!toastEl) return;
+  toastEl.textContent = message;
+  toastEl.classList.remove('hidden');
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => {
+    toastEl.classList.add('hidden');
+  }, 2400);
+}
+
 function toggleFavorite(toolId) {
+  const tool = state.tools.find(t => t.id === toolId);
+  const toolName = tool ? tool.name : 'Tool';
+
   if (state.favorites.has(toolId)) {
     state.favorites.delete(toolId);
+    showToast(`Removed ${toolName} from favorites`);
   } else {
     state.favorites.add(toolId);
+    showToast(`Saved ${toolName} to favorites`);
   }
   saveFavorites();
   renderTools();
