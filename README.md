@@ -4,14 +4,29 @@ A modern, responsive, and vibrant web application to help users discover, filter
 
 ---
 
+## 📅 Contribution Roadmap
+
+| Step | Feature Description | Status | Git Commit Message |
+| :---: | :--- | :---: | :--- |
+| **1** | **Initial project setup & Theme Toggle** | ✅ Pushed | `Initial project setup` |
+| **2** | **Responsive homepage layout & Hero UI** | ✅ Pushed | `Add responsive homepage layout` |
+| **3** | **AI tools dataset (24+ tools, Free/Paid)** | ✅ Pushed | `Add AI tools dataset` |
+| **4** | **Real-time search & keyboard shortcuts** | ✅ Completed | `Implement search functionality` |
+| **5** | Category filtering refinements | ⏳ Next | `Add category filtering` |
+| **6** | Favorites bookmarking (LocalStorage) | ⏳ Queued | `Implement favourites feature` |
+| **7** | Responsive design & vibrant polish | ⏳ Queued | `Improve responsive design` |
+| **8** | Project documentation & polish | ⏳ Queued | `Update project documentation` |
+
+---
+
 ## Key Features
 
 - **Standard Modern Dashboard**: Clean professional layout with zero emojis, clean SVG iconography, and balanced typography.
 - **Vibrant Color Palette**: Bright energetic gradients (electric indigo, luminous cyan, vivid fuchsia, mint emerald) with high-contrast light and luminous dark modes.
 - **Comprehensive 24+ AI Directory**: Curated tools including ChatGPT, Claude, Gemini, Perplexity, Cursor, v0, GitHub Copilot, Runway, Sora, Midjourney, Stable Diffusion, ElevenLabs, and more.
-- **Instant Search**: Real-time search across tool names, capabilities, tags, and descriptions.
-- **Category & Pricing Filtering**: Filter by category (Coding, Chatbots, Writing, Research, etc.) and pricing tier (Free, Freemium, Paid).
-- **LocalStorage Bookmarks**: Save favourite tools with persistent client-side storage.
+- **Smart Instant Search**: Real-time search with visual keyword match highlighting and `/` or `Ctrl + K` quick shortcuts.
+- **Category & Pricing Filtering**: Filter by category (Coding, Chatbots, Writing, Research, etc.) and simplified pricing tiers (Free & Paid).
+- **LocalStorage Bookmarks**: Save favorite tools with persistent client-side storage and instant header counter.
 - **Fully Responsive**: Optimized for desktop, tablet, and mobile screens.
 
 ---

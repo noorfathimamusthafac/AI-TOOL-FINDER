@@ -420,6 +420,23 @@ function getFilteredTools() {
 /* ==========================================================================
    Helper Utilities (Monogram & Badges)
    ========================================================================== */
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function highlightMatches(text, query) {
+  const safeText = escapeHtml(text);
+  if (!query) return safeText;
+  const safeQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(${safeQuery})`, 'gi');
+  return safeText.replace(regex, '<mark class="search-highlight">$1</mark>');
+}
+
 function getInitials(name) {
   const parts = name.trim().split(/\s+/);
   if (parts.length >= 2) {
@@ -454,13 +471,15 @@ function renderTools() {
 
   // Status text update
   let statusText = `Showing ${filtered.length} of ${total} tools`;
-  if (state.showFavoritesOnly) {
+  if (state.searchQuery.trim()) {
+    statusText = `Found ${filtered.length} ${filtered.length === 1 ? 'tool' : 'tools'} matching "${escapeHtml(state.searchQuery.trim())}"`;
+  } else if (state.showFavoritesOnly) {
     statusText = `Showing ${filtered.length} favorite tools`;
   } else if (state.selectedCategory !== 'All') {
     statusText = `Showing ${filtered.length} tools in ${state.selectedCategory}`;
   }
   if (dom.resultsCountText) {
-    dom.resultsCountText.textContent = statusText;
+    dom.resultsCountText.innerHTML = statusText;
   }
 
   // Active filters reset button visibility
@@ -498,11 +517,15 @@ function renderTools() {
   dom.toolsGrid.classList.remove('hidden');
 
   // Render Tool Cards
+  const activeQuery = state.searchQuery.trim();
+
   filtered.forEach(tool => {
     const isFav = state.favorites.has(tool.id);
     const monogram = getInitials(tool.name);
     const tagClass = getCategoryTagClass(tool.category);
     const pricingClass = getPricingBadgeClass(tool.pricing);
+    const displayName = highlightMatches(tool.name, activeQuery);
+    const displayDesc = highlightMatches(tool.description, activeQuery);
 
     const card = document.createElement('article');
     card.className = 'tool-card';
@@ -513,7 +536,7 @@ function renderTools() {
         <div class="card-title-group">
           <div class="tool-monogram" aria-hidden="true">${monogram}</div>
           <div class="tool-name-container">
-            <h3 class="tool-name">${tool.name}</h3>
+            <h3 class="tool-name">${displayName}</h3>
             ${
               tool.featured
                 ? `<span class="featured-indicator" title="Featured Tool">
@@ -542,7 +565,7 @@ function renderTools() {
         <span class="pricing-badge ${pricingClass}">${tool.pricing}</span>
       </div>
 
-      <p class="card-description">${tool.description}</p>
+      <p class="card-description">${displayDesc}</p>
 
       ${
         tool.tags && tool.tags.length > 0
@@ -584,6 +607,29 @@ function renderTools() {
    Event Handlers Setup
    ========================================================================== */
 function setupEventListeners() {
+  // Global Keyboard Shortcut: '/' or 'Ctrl+K' to focus search, 'Escape' to clear
+  document.addEventListener('keydown', (e) => {
+    const isInputFocused = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName);
+
+    if (e.key === '/' && !isInputFocused) {
+      e.preventDefault();
+      dom.searchInput?.focus();
+      dom.searchInput?.select();
+    } else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      dom.searchInput?.focus();
+      dom.searchInput?.select();
+    } else if (e.key === 'Escape' && document.activeElement === dom.searchInput) {
+      if (state.searchQuery) {
+        state.searchQuery = '';
+        if (dom.searchInput) dom.searchInput.value = '';
+        dom.clearSearchBtn?.classList.add('hidden');
+        renderTools();
+      }
+      dom.searchInput?.blur();
+    }
+  });
+
   // 1. Search input
   dom.searchInput?.addEventListener('input', (e) => {
     state.searchQuery = e.target.value;
