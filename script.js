@@ -371,7 +371,24 @@ async function loadToolsData() {
   } catch (err) {
     state.tools = DEFAULT_TOOLS;
   }
+  updateCategoryPillsCount();
   renderTools();
+}
+
+function updateCategoryPillsCount() {
+  const categoryCounts = {};
+  state.tools.forEach(tool => {
+    categoryCounts[tool.category] = (categoryCounts[tool.category] || 0) + 1;
+  });
+
+  dom.categoryPills?.querySelectorAll('.pill').forEach(pill => {
+    const cat = pill.getAttribute('data-category');
+    const count = cat === 'All' ? state.tools.length : (categoryCounts[cat] || 0);
+    const countSpan = pill.querySelector('.pill-count');
+    if (countSpan) {
+      countSpan.textContent = count;
+    }
+  });
 }
 
 /* ==========================================================================

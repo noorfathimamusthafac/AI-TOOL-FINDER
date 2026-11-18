@@ -11,9 +11,9 @@ A modern, responsive, and vibrant web application to help users discover, filter
 | **1** | **Initial project setup & Theme Toggle** | ✅ Pushed | `Initial project setup` |
 | **2** | **Responsive homepage layout & Hero UI** | ✅ Pushed | `Add responsive homepage layout` |
 | **3** | **AI tools dataset (24+ tools, Free/Paid)** | ✅ Pushed | `Add AI tools dataset` |
-| **4** | **Real-time search & keyboard shortcuts** | ✅ Completed | `Implement search functionality` |
-| **5** | Category filtering refinements | ⏳ Next | `Add category filtering` |
-| **6** | Favorites bookmarking (LocalStorage) | ⏳ Queued | `Implement favourites feature` |
+| **4** | **Real-time search & keyboard shortcuts** | ✅ Pushed | `Implement search functionality` |
+| **5** | **Category filtering & dynamic count badges** | ✅ Completed | `Add category filtering` |
+| **6** | Favorites bookmarking (LocalStorage) | ⏳ Next | `Implement favourites feature` |
 | **7** | Responsive design & vibrant polish | ⏳ Queued | `Improve responsive design` |
 | **8** | Project documentation & polish | ⏳ Queued | `Update project documentation` |
 
