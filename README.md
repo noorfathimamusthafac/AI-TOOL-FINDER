@@ -1,10 +1,10 @@
-# AI Tool Finder - Discover the Right AI Tool
+# AI Tool Finder — Discover the Future of Intelligence
 
 [![Live Demo](https://img.shields.io/badge/demo-online-brightgreen.svg)](https://noorfathimamusthafac.github.io/AI-TOOL-FINDER/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-none-orange.svg)](#)
 
-A modern, responsive, and vibrant web application to help creators, developers, students, and professionals discover, filter, search, and bookmark top AI tools across chatbots, coding, writing, research, image, and video generation.
+A visual experience and intelligence observatory inspired by **Dubai Future Week 2026**. Designed to discover, filter, search, and curate breakthrough artificial intelligence systems across foundation models, autonomous agents, code synthesis, generative media, and research.
 
 ---
 
@@ -15,14 +15,27 @@ A modern, responsive, and vibrant web application to help creators, developers, 
 
 ---
 
-## 🌟 Key Features
+## 🎨 Visual Identity & Design System (Dubai Future Week Inspired)
 
-- **Standard Modern Dashboard**: Clean professional layout with zero emojis, clean SVG iconography, and balanced typography.
-- **Vibrant Color Palette**: Bright energetic gradients (electric indigo, luminous cyan, vivid fuchsia, mint emerald) with high-contrast light and luminous dark modes.
-- **Comprehensive 24+ AI Directory**: Curated tools including ChatGPT, Claude, Gemini, Perplexity, Cursor, v0, GitHub Copilot, Runway, Sora, Midjourney, Stable Diffusion, ElevenLabs, and more.
-- **Smart Search & Match Highlighting**: Real-time keyword search with visual text match highlighting in tool names and descriptions.
+- **Editorial Typography**: Pairing avant-garde geometric headers (`Syne`) with elegant high-fashion italic serifs (`Instrument Serif`) and clean UI typography (`Plus Jakarta Sans`).
+- **Sophisticated Color Architecture**:
+  - Cosmic deep purple & obsidian backgrounds (`#080413`, `#100824`)
+  - Electric violet & bright neon pink highlights (`#7c3aed`, `#ec4899`)
+  - Soft wisteria lavender and cyber cyan glows (`#ede9fe`, `#06b6d4`)
+  - Warm editorial off-white light mode (`#faf8f5`) with violet contrast
+- **Bento Grid Architecture**: Asymmetrical metric cards, curated spotlight showcases, and oversized editorial section numbering (`01 //`, `02 //`, `03 //`, `04 //`, `05 //`).
+- **Atmospheric Ambient Glow**: Layered luminous mesh orbs creating cinematic depth without performance lag.
+- **Zero Emojis**: 100% bespoke SVG iconography and geometric brand monograms.
+- **Micro-Interactions**: Smooth card elevations, live status indicators, fluid category pill transitions, and floating toast notifications.
+
+---
+
+## 🌟 Core Features
+
+- **Comprehensive 24+ AI Systems**: Curated tools including ChatGPT, Claude, Gemini, Perplexity, Cursor, v0, GitHub Copilot, Runway Gen-3, Sora, Midjourney, Stable Diffusion, ElevenLabs, and more.
+- **Smart Search & Match Highlighting**: Real-time keyword search with visual text match highlighting in model titles and descriptions.
 - **Keyboard Shortcuts**: Press `/` or `Ctrl + K` to jump to search instantly; press `Escape` to clear.
-- **Category Filter Pills with Live Badges**: Instant filtering across Coding, AI Chatbots, Writing, Research, Image Generation, Video Generation, and Productivity with live tool counts.
+- **Category Filter Pills with Live Badges**: Instant filtering across Coding, AI Chatbots, Writing, Research, Image Generation, Video Generation, and Productivity with live model counts.
 - **Simplified Pricing Models**: Clear badges for **Free** and **Paid** tiers with dedicated dropdown filter.
 - **Persistent Favorites with Toast Alerts**: Bookmark tools to `localStorage` with a single click and receive subtle confirmation toasts.
 - **Fully Responsive**: Optimized for desktop monitors, tablets (2-column layout), and mobile devices (1-column layout with horizontal touch scrolling).
@@ -32,26 +45,11 @@ A modern, responsive, and vibrant web application to help creators, developers, 
 
 ## 🛠️ Technology Stack
 
-- **HTML5**: Semantic and accessible markup.
-- **CSS3**: CSS Custom Properties (Variables), Flexbox, CSS Grid, and custom transitions.
-- **Vanilla JavaScript (ES6+)**: Modular application state, dynamic DOM rendering, and event delegation.
+- **HTML5**: Semantic accessible markup and editorial layout sections.
+- **CSS3**: Custom Properties (Variables), Flexbox, Bento CSS Grid, and custom animations.
+- **Vanilla JavaScript (ES6+)**: Modular application state, IntersectionObserver scroll animations, and LocalStorage persistence.
 - **JSON**: Structured storage of AI tools metadata in `data/tools.json`.
 - **LocalStorage API**: Client-side persistence for theme selection and bookmarked favorites.
-
----
-
-## 📁 Project Structure
-
-```text
-ai-tool-finder/
-├── index.html        # Main landing page markup & structure
-├── style.css         # Vibrant design system, responsive styles, & themes
-├── script.js         # Core application logic, search, filters & LocalStorage
-├── data/
-│   └── tools.json    # Curated AI tools dataset (24+ entries)
-├── README.md         # Comprehensive project documentation
-└── .gitignore        # Git exclusion rules
-```
 
 ---
 
@@ -69,35 +67,6 @@ cd AI-TOOL-FINDER
 python -m http.server 8000
 ```
 Then navigate to `http://localhost:8000` in your web browser.
-
-### Method 3: VS Code Live Server
-1. Open the project folder in Visual Studio Code.
-2. Install the **Live Server** extension.
-3. Right-click `index.html` and choose **Open with Live Server**.
-
----
-
-## 📅 Completed Contribution Roadmap
-
-| Step | Feature Description | Status | Git Commit Message |
-| :---: | :--- | :---: | :--- |
-| **1** | **Initial project setup & Theme Toggle** | ✅ Completed | `Initial project setup` |
-| **2** | **Responsive homepage layout & Hero UI** | ✅ Completed | `Add responsive homepage layout` |
-| **3** | **AI tools dataset (24+ tools, Free/Paid)** | ✅ Completed | `Add AI tools dataset` |
-| **4** | **Real-time search & keyboard shortcuts** | ✅ Completed | `Implement search functionality` |
-| **5** | **Category filtering & dynamic count badges** | ✅ Completed | `Add category filtering` |
-| **6** | **Favorites bookmarking & toast notifications** | ✅ Completed | `Implement favourites feature` |
-| **7** | **Responsive design & mobile UX polish** | ✅ Completed | `Improve responsive design` |
-| **8** | **Project documentation & live deployment** | ✅ Completed | `Update project documentation` |
-
----
-
-## 🔮 Future Improvements
-
-- [ ] Community submission form for new AI tools.
-- [ ] Side-by-side tool comparison feature.
-- [ ] User ratings and comments section.
-- [ ] Export/import bookmarked tools as a JSON file.
 
 ---
 

@@ -562,7 +562,7 @@ function renderTools() {
     const displayDesc = highlightMatches(tool.description, activeQuery);
 
     const card = document.createElement('article');
-    card.className = 'tool-card';
+    card.className = 'tool-card fade-in-up is-visible';
     card.setAttribute('data-id', tool.id);
 
     card.innerHTML = `
@@ -749,6 +749,62 @@ function setupEventListeners() {
     e.preventDefault();
     resetAllFilters();
   });
+
+  // 7. Spotlight Links Quick Filter
+  document.querySelectorAll('.spotlight-link[data-filter]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const targetCategory = link.getAttribute('data-filter');
+      if (!targetCategory) return;
+
+      // Update Category Pills UI
+      dom.categoryPills?.querySelectorAll('.pill').forEach(pill => {
+        const isMatch = pill.getAttribute('data-category') === targetCategory;
+        pill.classList.toggle('active', isMatch);
+        pill.setAttribute('aria-selected', String(isMatch));
+      });
+
+      state.selectedCategory = targetCategory;
+      renderTools();
+    });
+  });
+
+  // 8. Header Blur / Shadow On Scroll
+  const appHeader = document.getElementById('app-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 25) {
+      appHeader?.classList.add('scrolled');
+    } else {
+      appHeader?.classList.remove('scrolled');
+    }
+  });
+}
+
+/* ==========================================================================
+   Smooth Scroll Animations (Dubai Future Week Inspired)
+   ========================================================================== */
+function initScrollAnimations() {
+  const elements = document.querySelectorAll('.fade-in-up');
+  if (!('IntersectionObserver' in window)) {
+    elements.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delay = entry.target.getAttribute('data-delay') || 0;
+        setTimeout(() => {
+          entry.target.classList.add('is-visible');
+        }, Number(delay));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  elements.forEach(el => observer.observe(el));
 }
 
 /* ==========================================================================
@@ -759,5 +815,6 @@ document.addEventListener('DOMContentLoaded', () => {
   loadFavorites();
   setupEventListeners();
   loadToolsData();
-  console.log('AI Tool Finder: Clean Free & Paid Dashboard loaded.');
+  initScrollAnimations();
+  console.log('AI Tool Finder: Dubai Future Week inspired visual experience active.');
 });
