@@ -479,6 +479,32 @@ function getInitials(name) {
   return name.slice(0, 2).toUpperCase();
 }
 
+function getCategoryThemeClass(category) {
+  switch (category.toLowerCase()) {
+    case 'ai chatbots': return 'card-theme-chatbots';
+    case 'coding': return 'card-theme-coding';
+    case 'writing': return 'card-theme-writing';
+    case 'research': return 'card-theme-research';
+    case 'image generation': return 'card-theme-image';
+    case 'video generation': return 'card-theme-video';
+    case 'productivity': return 'card-theme-productivity';
+    default: return 'card-theme-default';
+  }
+}
+
+function getMonogramClass(category) {
+  switch (category.toLowerCase()) {
+    case 'ai chatbots': return 'mono-chatbots';
+    case 'coding': return 'mono-coding';
+    case 'writing': return 'mono-writing';
+    case 'research': return 'mono-research';
+    case 'image generation': return 'mono-image';
+    case 'video generation': return 'mono-video';
+    case 'productivity': return 'mono-productivity';
+    default: return 'mono-default';
+  }
+}
+
 function getCategoryTagClass(category) {
   switch (category.toLowerCase()) {
     case 'ai chatbots': return 'tag-chatbots';
@@ -556,19 +582,21 @@ function renderTools() {
   filtered.forEach(tool => {
     const isFav = state.favorites.has(tool.id);
     const monogram = getInitials(tool.name);
+    const themeClass = getCategoryThemeClass(tool.category);
+    const monoClass = getMonogramClass(tool.category);
     const tagClass = getCategoryTagClass(tool.category);
     const pricingClass = getPricingBadgeClass(tool.pricing);
     const displayName = highlightMatches(tool.name, activeQuery);
     const displayDesc = highlightMatches(tool.description, activeQuery);
 
     const card = document.createElement('article');
-    card.className = 'tool-card fade-in-up is-visible';
+    card.className = `tool-card ${themeClass} fade-in-up is-visible`;
     card.setAttribute('data-id', tool.id);
 
     card.innerHTML = `
       <div class="card-header">
         <div class="card-title-group">
-          <div class="tool-monogram" aria-hidden="true">${monogram}</div>
+          <div class="tool-monogram ${monoClass}" aria-hidden="true">${monogram}</div>
           <div class="tool-name-container">
             <h3 class="tool-name">${displayName}</h3>
             ${
